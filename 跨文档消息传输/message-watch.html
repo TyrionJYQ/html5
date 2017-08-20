@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>跨域文档通信2</title>
+	<meta charset="utf-8">
+</head>
+	<script type="text/javascript">
+		window.onload = function() {
+			document.getElementById("title").innerHTML = 
+			"页面在" + document.location.host + "域中，且每过1秒向index.html文档发送一个消息！";
+			//定时向另外一个不同域的iframe发送消息
+			setInterval(function() {
+				var message = " 消息发送测试！&nbsp;&nbsp " + (new Date().getTime());
+				window.parent.frames[0].postMessage(message,"*");
+			},1000);
+
+			var onmessage = function(e) {
+				var data =e.data;
+				console.log(e.data);
+				var p = document.createElement("p");
+				p.innerHTML = data;
+			};
+			//监听postMessage消息事件
+			if(window.addEventListener != "undefined") {
+				window.addEventListener("message",onmessage,false);
+			}else if (window.attachEvent) {
+				window.attachEvent("onmessage",onmessage);
+			}
+		};
+	</script>
+<body>
+	<div id="title"></div>
+	<br/>
+	<iframe width="400" ></iframe>  
+</body>
+</html>
