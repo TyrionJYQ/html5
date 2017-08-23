@@ -1,0 +1,10 @@
+跨文档消息传输
+1.跨文档消息传输的基本知识
+利用跨文档可以实现跨域的数据波动，使服务器端不再被动的等待客户端的要求，只要客户端与服务器端建立了一次链接之后，服务端就可以在需要的时候，主动的将数据推送到客户端，直到客户端显示关闭这个链接。
+Html5提供了在网页文档之间互相接收与发送消息的功能。使用这个功能，只要获取到网页所在页面对象的实例，不仅同域的Web网页之间可以互相通信，甚至可以实现跨域通信。
+想要接受从其他文档那里发过来的消息，就必须对文档对象的message时间进行监视，实现代码如下：
+window.addEventListener("message",function(){},false)；
+想要发送消息，可以使用window对象的postMessage方法来实现，代码如下：
+window.postMessage(message,targetOrigin)
+备注：postMessage是HTML5为了解决跨文档通信，特别引入的一个新的API，目前支持这个API的浏览器有：IE8+,Firefox,Opera,Safari,Chrome.
+postMessage允许页面中的多个iframe/window的通信，postMessage也可以实现ajax直接跨域，不通过服务器代理。

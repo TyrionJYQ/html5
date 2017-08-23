@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>认识web存储</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="demo.js"></script>
+</head>
+<body>
+	<h3>使用JSON对象存储数据</h3>
+	<h4>填写待存储信息到表格中</h4>
+	<fieldset>
+		<legend>User Message</legend>
+		<label for="user">用户名：<input type="text" name="user" id="user" /></label>
+		<label for="mail">E-mail<input type="text" name="mail" id="mail" /></label>
+		<label for="tel">联系电话：<input type="text" name="tel" id="tel" /></label>
+		<input type="button" name="button" id="btn1" value="保存">
+	</fieldset>
+	<hr/>
+	<h4>检索已经存入的localStorage的JSON对象，并且开始展示原始信息</h4>
+	<p>输入上表中的用户名来查找相应用户信息</p>
+	<label for="find"><input type="text" name="find" id="find"></label>
+	<input type="button" name="button" id="btn2" value="检索">
+	<!-- 下面这块用于显示被检索到的用户文本 -->
+	<p id="msg"></p>
+
+</body>
+</html>
